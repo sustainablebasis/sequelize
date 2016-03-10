@@ -17,15 +17,19 @@ $ npm install --save tedious // MSSQL
 Sequelize will setup a connection pool on initialization so you should ideally only ever create one instance per database.
 
 ```js
+// For cassandra database === keyspace
 var sequelize = new Sequelize('database', 'username', 'password', {
   host: 'localhost',
-  dialect: 'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql',
+  dialect: 'mysql'|'mariadb'|'sqlite'|'postgres'|'mssql'|'cassandra',
 
   pool: {
     max: 5,
     min: 0,
     idle: 10000
   },
+  
+  // Cassandra only
+  contactPoints ['h1', 'h2'],
 
   // SQLite only
   storage: 'path/to/database.sqlite'
